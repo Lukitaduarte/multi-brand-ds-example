@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:multi_brand_ds_example/src/design_system/components/button/motriz_button.dart';
+import 'package:multi_brand_ds_example/src/design_system/components/button/styles/button_hierarchy.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
+
+import '../design_system/components/button/styles/button_size.dart';
 
 @UseCase(
   name: 'Default',
@@ -18,23 +21,23 @@ Widget buildMotrizButtonUseCase(BuildContext context) {
         initialValue: 'Continue to Shipping',
       ),
       size: context.knobs.list(
-        label: 'ButtonSizeType',
+        label: 'ButtonSize',
         options: [
-          ButtonSizeType.small,
-          ButtonSizeType.medium,
-          ButtonSizeType.large,
-          ButtonSizeType.xLarge,
+          const ButtonSmall(),
+          const ButtonMedium(),
+          const ButtonLarge(),
+          const ButtonExtraLarge(),
         ],
-        labelBuilder: (item) => item.name,
+        labelBuilder: (item) => item.toString(),
       ),
       hierarchy: context.knobs.list(
         label: 'ButtonHierarchyType',
         options: [
-          ButtonHierarchyType.primary,
-          ButtonHierarchyType.secondary,
-          ButtonHierarchyType.tertiary,
+          const ButtonPrimary(),
+          const ButtonSecondary(),
+          const ButtonTertiary(),
         ],
-        labelBuilder: (item) => item.name,
+        labelBuilder: (item) => item.toString(),
       ),
       disabled: context.knobs.boolean(
         label: 'Disabled',
@@ -61,14 +64,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.primary,
+          hierarchy: const ButtonPrimary(),
           disabled: false,
           onPress: () {},
         ),
@@ -78,14 +81,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.primary,
+          hierarchy: const ButtonPrimary(),
           disabled: true,
           onPress: () {},
         ),
@@ -95,14 +98,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.secondary,
+          hierarchy: const ButtonSecondary(),
           disabled: false,
           onPress: () {},
         ),
@@ -112,14 +115,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.secondary,
+          hierarchy: const ButtonSecondary(),
           disabled: true,
           onPress: () {},
         ),
@@ -129,14 +132,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.tertiary,
+          hierarchy: const ButtonTertiary(),
           disabled: false,
           onPress: () {},
         ),
@@ -146,14 +149,14 @@ Widget buildMotrizButtonUseCasePrimaryEnabled(BuildContext context) {
           size: context.knobs.list(
             label: 'ButtonSizeType',
             options: [
-              ButtonSizeType.small,
-              ButtonSizeType.medium,
-              ButtonSizeType.large,
-              ButtonSizeType.xLarge,
+              const ButtonSmall(),
+              const ButtonMedium(),
+              const ButtonLarge(),
+              const ButtonExtraLarge(),
             ],
-            labelBuilder: (item) => item.name,
+            labelBuilder: (item) => item.toString(),
           ),
-          hierarchy: ButtonHierarchyType.tertiary,
+          hierarchy: const ButtonTertiary(),
           disabled: true,
           onPress: () {},
         )

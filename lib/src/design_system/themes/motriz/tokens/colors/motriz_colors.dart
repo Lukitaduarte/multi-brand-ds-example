@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 base class MotrizColors {
+  const MotrizColors();
+
   MaterialColor get alert => const MaterialColor(
         0xFFBF5920,
         <int, Color>{

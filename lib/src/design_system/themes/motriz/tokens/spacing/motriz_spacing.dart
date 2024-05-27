@@ -1,4 +1,6 @@
 class MotrizSpacing {
+  const MotrizSpacing();
+
   Map<int, double> get value => {
         25: spacing25,
         50: spacing50,

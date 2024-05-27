@@ -1,4 +1,6 @@
 class MotrizBorderRadius {
+  const MotrizBorderRadius();
+
   double get none => 0.0;
 
   double get small => 2.0;
