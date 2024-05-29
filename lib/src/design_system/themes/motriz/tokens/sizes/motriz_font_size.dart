@@ -1,4 +1,6 @@
 class MotrizFontSize {
+  const MotrizFontSize();
+
   double get mini => 12.0;
 
   double get xTiny => 14.0;

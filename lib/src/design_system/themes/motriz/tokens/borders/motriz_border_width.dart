@@ -1,4 +1,6 @@
 class MotrizBorderWidth {
+  const MotrizBorderWidth();
+
   double get none => 0.0;
 
   double get xThin => 1.0;

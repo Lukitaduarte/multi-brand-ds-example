@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../motriz/tokens/colors/motriz_colors.dart';
 
 final class CentauroColors extends MotrizColors {
+  const CentauroColors();
+
   @override
   BrandColor get brand => const BrandColor(
         0xFF2D8656,

@@ -4,20 +4,7 @@ import 'package:multi_brand_ds_example/src/design_system/utils/extension.dart';
 import 'styles/button_hierarchy.dart';
 import 'styles/button_size.dart';
 
-enum ButtonHierarchyType {
-  primary,
-  secondary,
-  tertiary,
-}
-
-enum ButtonSizeType {
-  small,
-  medium,
-  large,
-  xLarge,
-}
-
-class MotrizButton extends StatefulWidget {
+class MotrizButton extends StatelessWidget {
   const MotrizButton({
     super.key,
     required this.size,
@@ -34,8 +21,8 @@ class MotrizButton extends StatefulWidget {
     this.onPress,
     this.loading = false,
     this.disabled = false,
-    this.size = ButtonSizeType.medium,
-  }) : hierarchy = ButtonHierarchyType.primary;
+    this.size = const ButtonMedium(),
+  }) : hierarchy = const ButtonPrimary();
 
   const MotrizButton.secondary({
     super.key,
@@ -43,8 +30,8 @@ class MotrizButton extends StatefulWidget {
     this.onPress,
     this.loading = false,
     this.disabled = false,
-    this.size = ButtonSizeType.medium,
-  }) : hierarchy = ButtonHierarchyType.secondary;
+    this.size = const ButtonMedium(),
+  }) : hierarchy = const ButtonSecondary();
 
   const MotrizButton.tertiary({
     super.key,
@@ -52,40 +39,36 @@ class MotrizButton extends StatefulWidget {
     this.onPress,
     this.loading = false,
     this.disabled = false,
-    this.size = ButtonSizeType.medium,
-  }) : hierarchy = ButtonHierarchyType.tertiary;
+    this.size = const ButtonMedium(),
+  }) : hierarchy = const ButtonTertiary();
 
   final String text;
   final bool loading;
   final bool disabled;
-  final ButtonSizeType size;
-  final ButtonHierarchyType hierarchy;
   final GestureTapCallback? onPress;
 
-  @override
-  State<StatefulWidget> createState() => _MotrizButtonState();
-}
+  /// The size of the button.
+  ///
+  /// The types can be:
+  /// - [ButtonSmall]
+  /// - [ButtonMedium]
+  /// - [ButtonLarge]
+  /// - [ButtonExtraLarge]
+  final ButtonSize size;
 
-class _MotrizButtonState extends State<MotrizButton> {
-  Map<ButtonHierarchyType, ButtonHierarchy> get _buttonStyle => {
-        ButtonHierarchyType.primary: ButtonPrimary(context),
-        ButtonHierarchyType.secondary: ButtonSecondary(context),
-        ButtonHierarchyType.tertiary: ButtonTertiary(context),
-      };
-
-  Map<ButtonSizeType, ButtonSize> get _buttonSize => {
-        ButtonSizeType.small: ButtonSmall(context),
-        ButtonSizeType.medium: ButtonMedium(context),
-        ButtonSizeType.large: ButtonLarge(context),
-        ButtonSizeType.xLarge: ButtonExtraLarge(context),
-      };
+  /// The hierarchy of the button.
+  ///
+  /// The types can be:
+  /// - [ButtonPrimary]
+  /// - [ButtonSecondary]
+  /// - [ButtonTertiary]
+  final ButtonHierarchy hierarchy;
 
   @override
   Widget build(BuildContext context) {
-    final hierarchy = _buttonStyle[widget.hierarchy] ?? ButtonPrimary(context);
-    final size = _buttonSize[widget.size] ?? ButtonMedium(context);
-    final isDisabled =
-        widget.loading || widget.disabled || widget.onPress == null;
+    final buttonHierarchy = hierarchy.of(context);
+    final buttonSize = size.of(context);
+    final isDisabled = loading || disabled || onPress == null;
 
     return RawMaterialButton(
       elevation: 0,
@@ -97,38 +80,40 @@ class _MotrizButtonState extends State<MotrizButton> {
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: !isDisabled
-              ? hierarchy.borderColor
-              : hierarchy.disabledBorderColor,
+              ? buttonHierarchy.borderColor
+              : buttonHierarchy.disabledBorderColor,
           width: isDisabled
-              ? hierarchy.disabledBorderWidth
-              : hierarchy.borderWidth,
-          style: hierarchy.disabledBorderWidth.toBorderNone(),
+              ? buttonHierarchy.disabledBorderWidth
+              : buttonHierarchy.borderWidth,
+          style: buttonHierarchy.disabledBorderWidth.toBorderNone(),
         ),
         borderRadius: BorderRadius.circular(
-          hierarchy.borderRadius,
+          buttonHierarchy.borderRadius,
         ),
       ),
-      fillColor: isDisabled ? hierarchy.disableFillColor : hierarchy.fillColor,
+      fillColor: isDisabled
+          ? buttonHierarchy.disableFillColor
+          : buttonHierarchy.fillColor,
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
-      highlightColor: hierarchy.highlightColor,
-      splashColor: hierarchy.splashColor,
+      highlightColor: buttonHierarchy.highlightColor,
+      splashColor: buttonHierarchy.splashColor,
       padding: EdgeInsets.symmetric(
-        vertical: size.verticalSize,
-        horizontal: size.horizontalSize,
+        vertical: buttonSize.verticalSize,
+        horizontal: buttonSize.horizontalSize,
       ),
-      onPressed: !isDisabled ? widget.onPress : null,
+      onPressed: !isDisabled ? onPress : null,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Row(
             children: [
               Text(
-                widget.text,
+                text,
                 style: TextStyle(
                   color: isDisabled
-                      ? hierarchy.disableTextColor
-                      : hierarchy.textColor,
+                      ? buttonHierarchy.disableTextColor
+                      : buttonHierarchy.textColor,
                 ),
               ),
             ],

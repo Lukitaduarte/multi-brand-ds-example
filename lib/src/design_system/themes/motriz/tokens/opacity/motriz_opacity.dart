@@ -1,4 +1,6 @@
 class MotrizOpacity {
+  const MotrizOpacity();
+
   Map<int, double> get value => {
         0: opacity0,
         100: opacity100,

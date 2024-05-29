@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  equatable: ^2.0.3
   widgetbook_annotation: ^3.1.0
   widgetbook: ^3.7.0
 

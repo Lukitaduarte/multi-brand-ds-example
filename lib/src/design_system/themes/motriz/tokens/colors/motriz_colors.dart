@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 base class MotrizColors {
+  const MotrizColors();
+
   MaterialColor get alert => const MaterialColor(
         0xFFBF5920,
         <int, Color>{
@@ -56,12 +58,23 @@ base class MotrizColors {
 
   Color get focus => const Color(0xFF2677D0);
 
-  BrandColor get brand => throw UnimplementedError(
-        'Motriz base theme does not have brand colors.',
+  BrandColor get brand => const BrandColor(
+        0xFF111111,
+        <int, Color>{
+          100: Color(0xFF111111),
+          200: Color(0xFF111111),
+        },
       );
 
-  ComplementaryColor get complementary => throw UnimplementedError(
-        'Motriz base theme does not have complementary colors.',
+  ComplementaryColor get complementary => const ComplementaryColor(
+        0xFF111111,
+        <int, Color>{
+          100: Color(0xFF111111),
+          200: Color(0xFF111111),
+          300: Color(0xFF111111),
+          400: Color(0xFF111111),
+          500: Color(0xFF111111),
+        },
       );
 }
 

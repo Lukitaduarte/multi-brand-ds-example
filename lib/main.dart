@@ -8,8 +8,8 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'main.directories.g.dart';
 import 'src/design_system/themes/motriz/motriz_theme.dart';
 
-final sbfTheme = SbfTheme();
-final centauroTheme = CentauroTheme();
+const sbfTheme = SbfTheme();
+const centauroTheme = CentauroTheme();
 
 void main() {
   runApp(const WidgetbookApp());
@@ -38,16 +38,16 @@ class WidgetbookApp extends StatelessWidget {
         ),
         ThemeAddon<MotrizTheme>(
           themes: [
-            WidgetbookTheme(
+            const WidgetbookTheme(
               name: 'Sbf',
               data: sbfTheme,
             ),
-            WidgetbookTheme(
+            const WidgetbookTheme(
               name: 'Centauro',
               data: centauroTheme,
             ),
           ],
-          initialTheme: WidgetbookTheme(
+          initialTheme: const WidgetbookTheme(
             name: 'Sbf',
             data: sbfTheme,
           ),
