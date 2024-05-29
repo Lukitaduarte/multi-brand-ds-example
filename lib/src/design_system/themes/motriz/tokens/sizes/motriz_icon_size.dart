@@ -1,4 +1,6 @@
 class MotrizIconSize {
+  const MotrizIconSize();
+
   double get xSmall => 8.0;
 
   double get small => 16.0;

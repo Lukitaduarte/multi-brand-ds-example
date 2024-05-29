@@ -7,17 +7,21 @@ import 'tokens/sizes/motriz_icon_size.dart';
 import 'tokens/spacing/motriz_spacing.dart';
 
 abstract class MotrizTheme {
-  MotrizColors get colors => MotrizColors();
+  const MotrizTheme({
+    this.colors = const MotrizColors(),
+    this.spacing = const MotrizSpacing(),
+    this.borderRadius = const MotrizBorderRadius(),
+    this.borderWidth = const MotrizBorderWidth(),
+    this.fontSize = const MotrizFontSize(),
+    this.iconSize = const MotrizIconSize(),
+    this.opacity = const MotrizOpacity(),
+  });
 
-  MotrizSpacing get spacing => MotrizSpacing();
-
-  MotrizBorderRadius get borderRadius => MotrizBorderRadius();
-
-  MotrizBorderWidth get borderWidth => MotrizBorderWidth();
-
-  MotrizFontSize get fontSize => MotrizFontSize();
-
-  MotrizIconSize get iconSize => MotrizIconSize();
-
-  MotrizOpacity get opacity => MotrizOpacity();
+  final MotrizColors colors;
+  final MotrizSpacing spacing;
+  final MotrizBorderRadius borderRadius;
+  final MotrizBorderWidth borderWidth;
+  final MotrizFontSize fontSize;
+  final MotrizIconSize iconSize;
+  final MotrizOpacity opacity;
 }

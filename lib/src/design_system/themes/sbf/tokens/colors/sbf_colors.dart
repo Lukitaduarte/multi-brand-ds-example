@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../motriz/tokens/colors/motriz_colors.dart';
 
 final class SbfColors extends MotrizColors {
+  const SbfColors();
+
   @override
   BrandColor get brand => const BrandColor(
         0xFF2D8656,

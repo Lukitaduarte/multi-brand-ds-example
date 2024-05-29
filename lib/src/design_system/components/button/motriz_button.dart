@@ -45,6 +45,7 @@ class MotrizButton extends StatelessWidget {
   final String text;
   final bool loading;
   final bool disabled;
+  final GestureTapCallback? onPress;
 
   /// The size of the button.
   ///
@@ -63,10 +64,10 @@ class MotrizButton extends StatelessWidget {
   /// - [ButtonTertiary]
   final ButtonHierarchy hierarchy;
 
-  final GestureTapCallback? onPress;
-
   @override
   Widget build(BuildContext context) {
+    final buttonHierarchy = hierarchy.of(context);
+    final buttonSize = size.of(context);
     final isDisabled = loading || disabled || onPress == null;
 
     return RawMaterialButton(
@@ -79,25 +80,27 @@ class MotrizButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: !isDisabled
-              ? hierarchy.borderColor
-              : hierarchy.disabledBorderColor,
+              ? buttonHierarchy.borderColor
+              : buttonHierarchy.disabledBorderColor,
           width: isDisabled
-              ? hierarchy.disabledBorderWidth
-              : hierarchy.borderWidth,
-          style: hierarchy.disabledBorderWidth.toBorderNone(),
+              ? buttonHierarchy.disabledBorderWidth
+              : buttonHierarchy.borderWidth,
+          style: buttonHierarchy.disabledBorderWidth.toBorderNone(),
         ),
         borderRadius: BorderRadius.circular(
-          hierarchy.borderRadius,
+          buttonHierarchy.borderRadius,
         ),
       ),
-      fillColor: isDisabled ? hierarchy.disableFillColor : hierarchy.fillColor,
+      fillColor: isDisabled
+          ? buttonHierarchy.disableFillColor
+          : buttonHierarchy.fillColor,
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
-      highlightColor: hierarchy.highlightColor,
-      splashColor: hierarchy.splashColor,
+      highlightColor: buttonHierarchy.highlightColor,
+      splashColor: buttonHierarchy.splashColor,
       padding: EdgeInsets.symmetric(
-        vertical: size.verticalSize,
-        horizontal: size.horizontalSize,
+        vertical: buttonSize.verticalSize,
+        horizontal: buttonSize.horizontalSize,
       ),
       onPressed: !isDisabled ? onPress : null,
       child: Row(
@@ -109,8 +112,8 @@ class MotrizButton extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: isDisabled
-                      ? hierarchy.disableTextColor
-                      : hierarchy.textColor,
+                      ? buttonHierarchy.disableTextColor
+                      : buttonHierarchy.textColor,
                 ),
               ),
             ],
